@@ -1,6 +1,6 @@
 export const buildings = [
   {
-    name: "Cursor",
+    name: "Cursor",   
     cost: 15,
     cookiesPerSecond: 0.1,
     description: "Autoclicks once every 10 seconds.",

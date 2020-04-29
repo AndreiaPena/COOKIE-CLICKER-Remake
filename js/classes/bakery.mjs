@@ -1,4 +1,4 @@
-class Bakery{
+export class Bakery{
     constructor(name, cookies, buildings, cookiesPerClick, cookiesPerSecond){
         this.name = name;
         this.cookies = cookies;
@@ -8,3 +8,5 @@ class Bakery{
     }
     
 }
+
+
