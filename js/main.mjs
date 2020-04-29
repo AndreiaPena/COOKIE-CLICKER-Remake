@@ -33,11 +33,13 @@ const newBuilding = new Building()
 // console.log(newBuilding)
 
 let divStore = document.getElementById('store')
+let divBuilding = document.getElementById('buildings')
+// console.log(divBuilding)
 
 let divCursor = document.createElement('div')
 divCursor.id=`building-${buildings[0].name.toLowerCase()}`
 divCursor.classList='locked disabled'
-divStore.appendChild(divCursor)
+divBuilding.appendChild(divCursor)
 
 let divIcon = document.createElement('div')
 divIcon.classList='icon'
@@ -45,12 +47,12 @@ divCursor.appendChild(divIcon)
 
 let divName = document.createElement('div')
 divName.classList='name'
-divName.innerHTML="Cursor"
+divName.innerHTML= buildings[0].name
 divCursor.appendChild(divName)
 
 let divCost = document.createElement('div')
 divCost.classList='cost'
-divCost.innerHTML="15"
+divCost.innerHTML= buildings[0].cost
 divCursor.appendChild(divCost)
 
 let divNumber = document.createElement('div')

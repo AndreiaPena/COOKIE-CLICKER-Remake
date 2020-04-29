@@ -9,13 +9,46 @@
     margin-top: 15px;
     min-height: 16px;
     display: flex;
+    flex-direction: column;
 }
 
   #buildings:hover::before{
-    content: "Upgrades";
+    content: "Buildings";
     font-size: 11px;
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 0px 0px 4px #000000; 
     text-shadow: 0px 1px 4px #000000; 
+  }
+
+  #buildings > div {
+    background-image: url('/assets/images/store-tile.jpg');
+    height: 10vh;
+    cursor:pointer;
+  }
+
+  /* #buildings > div::after {
+   
+  } */
+
+  .locked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 35%;
+    background-position-y: top;
+    height: 10vh;
+    width: 5vw;
+  }
+  /* .unlocked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 35%;
+    background-position-y: top;
+    height: 10vh;
+    width: 5vw;
+  } */
+  .name {
+    font-size: 21 px;
+  }
+  
+  .cost {
+    color: #edb8a9;
   }
