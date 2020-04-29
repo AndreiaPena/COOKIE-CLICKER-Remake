@@ -11,9 +11,12 @@
     margin-bottom: 10%;
     background-color: rgba(0, 0, 0, 0.568); 
     width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 #cookiesStock{
-    font-size: 1.4em;
+    font-size: 2em;
 }
 #cookiesPerSecond{
     font-size: 1em;

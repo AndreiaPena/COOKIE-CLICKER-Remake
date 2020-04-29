@@ -23,6 +23,11 @@ spanStock[0].innerHTML = newBakery._cookies
 // let spanStock = divStock .getElementsByTagName('span')
 // spanStock[0].innerHTML = newBakery._cookies
 
+
+let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
+console.log(spanPerSecond)
+spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
+
 const newBuilding = new Building()
 
 console.log(newBuilding)
