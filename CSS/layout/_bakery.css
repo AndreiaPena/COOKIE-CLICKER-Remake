@@ -1,5 +1,5 @@
 #bakery{
-    background: linear-gradient(black, transparent);
+    background: linear-gradient(#0b0b0be7,#0b0b0b31, #0b0b0be7);
     /* inserer ligne andreia pour le dégradé du fond qui est le meme que le strore */
     display:flex;
     flex-direction: column;
@@ -7,7 +7,10 @@
 }
 
 #cookies{
-    background-color: rgba(0, 0, 0, 0.856); 
+    margin-top: 5%;
+    margin-bottom: 10%;
+    background-color: rgba(0, 0, 0, 0.568); 
+    width: 100%;
 }
 #cookiesStock{
     font-size: 1.4em;
@@ -29,7 +32,8 @@
 }
 
 #bigCookie:hover{
-    height: 250px;
-    width: 250px;
-    transition: ease;
+    background-size: 250px;
+}
+#bigCookie:active{
+    background-size: 213px;
 }
