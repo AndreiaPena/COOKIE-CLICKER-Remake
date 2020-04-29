@@ -1,10 +1,10 @@
 export class Bakery{
-    constructor(name, cookies, buildings, cookiesPerClick, cookiesPerSecond){
-        this.name = name;
-        this.cookies = cookies;
-        this.buildings = buildings;
-        this.cookiesPerClick = cookiesPerClick;
-        this.cookiesPerSecond = cookiesPerSecond;
+    constructor(name = 'Macarena', cookies = 0, buildings = [], cookiesPerClick = 1, cookiesPerSecond = 0){
+        this._name = name;
+        this._cookies = cookies;
+        this._buildings = buildings;
+        this._cookiesPerClick = cookiesPerClick;
+        this._cookiesPerSecond = cookiesPerSecond;
     }
     
 }
