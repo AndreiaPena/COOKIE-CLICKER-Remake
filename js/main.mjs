@@ -2,7 +2,7 @@ import {Bakery} from './classes/bakery.mjs';
 import {Building} from './classes/building.mjs';
 import {buildings} from './data.mjs';
 
-
+// console.log(buildings[0].name)
 
 // J'instancie la class Bakery, pour créer newBakery
 const newBakery = new Bakery()
@@ -23,11 +23,37 @@ spanStock[0].innerHTML = newBakery._cookies
 // let spanStock = divStock .getElementsByTagName('span')
 // spanStock[0].innerHTML = newBakery._cookies
 
-
 let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
-console.log(spanPerSecond)
+// console.log(spanPerSecond)
 spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
 
-const newBuilding = new Building()
 
-console.log(newBuilding)
+
+const newBuilding = new Building()
+// console.log(newBuilding)
+
+let divStore = document.getElementById('store')
+
+let divCursor = document.createElement('div')
+divCursor.id=`building-${buildings[0].name.toLowerCase()}`
+divCursor.classList='locked disabled'
+divStore.appendChild(divCursor)
+
+let divIcon = document.createElement('div')
+divIcon.classList='icon'
+divCursor.appendChild(divIcon)
+
+let divName = document.createElement('div')
+divName.classList='name'
+divName.innerHTML="Cursor"
+divCursor.appendChild(divName)
+
+let divCost = document.createElement('div')
+divCost.classList='cost'
+divCost.innerHTML="15"
+divCursor.appendChild(divCost)
+
+let divNumber = document.createElement('div')
+divNumber.classList='number'
+divCursor.appendChild(divNumber)
+

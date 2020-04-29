@@ -1,3 +1,5 @@
+
+
 export class Building {
     constructor(name = 'batiment', description = 'blabla', number = 0, cookiesPerSecond = 1, cost = 1000){
         this._name = name;
@@ -6,4 +8,9 @@ export class Building {
         this._cookiesPerSecond = cookiesPerSecond;
         this._cost = cost
     }
+
+    get name(){
+        return this._name;
+    }
 }
+// console.log(Building)
