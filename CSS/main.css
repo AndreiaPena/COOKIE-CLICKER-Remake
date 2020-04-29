@@ -13,7 +13,7 @@
 
 #game{
     background-color: blue;
-    background-image: url(../assets/images/bg-blue.jpg);
+    background-image: url("/assets/images/bg-blue.jpg");
     height: 100vh;
     width: 100vw;
 }
