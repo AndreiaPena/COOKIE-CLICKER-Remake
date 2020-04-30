@@ -25,19 +25,15 @@
     background-image: url('/assets/images/store-tile.jpg');
     height: 10vh;
     cursor:pointer;
+    position: relative;
+    z-index: 2;
   }
 
-  /* #buildings > div::after {
-   
-  } */
-
-  .locked .icon {
-    background-image: url('/assets/images/buildings.png');
-    background-position-x: 35%;
-    background-position-y: top;
-    height: 10vh;
-    width: 5vw;
+  #buildings > div:hover {
+    box-shadow: inset 0px 0px 15px 3px #ffffff;
+    transition : 0.5s ;
   }
+  
 
   .unlocked .icon {
     background-image: url('/assets/images/buildings.png');
@@ -47,19 +43,49 @@
     width: 5vw;
   }
 
-  .cost{
-    background: url(/assets/images/money.png) no-repeat;
-    font-size: 11.2px;
-    color: #66ff66;
-  }
-  .disabled .cost {
-    color: #ff6666;
-  
-    /* opacity : black 50%; */
+  .locked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 35%;
+    background-position-y: top;
+    height: 10vh;
+    width: 5vw;
   }
 
   .name {
     font-size: 21px;
+    position: absolute ;
+    top: 15% ;
+    left : 23%;
   }
+
+  .name , .cost {
+    font-weight: bold;
+    text-shadow: 0px 0px 4px #000000; 
+    text-shadow: 0px 1px 4px #000000; 
+  }
+
+  .cost{
+    position: absolute;
+    bottom: 15%;
+    left : 23% ;
+    background: url('/assets/images/money.png') no-repeat top left;
+    font-size: 11.2px;
+    text-align: center;
+    color: #66ff66;
+    height: 3vh;
+    width: 5vw;
+  }
+
+  
+  .disabled .cost {
+    color: #ff6666;
+  }
+
+  .disabled::after {
+    z-index: 1;
+    background-color: black;
+    opacity : 0.5;
+   }
+ 
   
   

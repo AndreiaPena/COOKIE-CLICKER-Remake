@@ -2,91 +2,70 @@ import {Bakery} from './classes/bakery.mjs';
 import {Building} from './classes/building.mjs';
 import {buildings} from './data.mjs';
 
-// console.log(buildings[0].name)
-
-// J'instancie la class Bakery, pour créer newBakery
 const newBakery = new Bakery()
+const newBuilding = new Building()
 
 
-// Ici on déclare une variable h2Bakery, auquel on souhaite récupérer le h2
+
 let h2Bakery = document.querySelector('h2')
-// A ce h2Bakery, qui est le h2 en html, on veut changer son string par la valeur de l'attribut newBakery._name qui est par défaut Macarena
 h2Bakery.innerHTML = newBakery._name
 
-// Ici on déclare une variable spanStock qui récupère la balise span de la div dont l'id est cookiesStock
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
-// getElementsByTagName renvoie un HTMLCollection, il faut donc que j'indexe à [0] ma span pour la récupérer
+// let spanStock = document.querySelector('#cookiesStock span')
 spanStock[0].innerHTML = newBakery._cookies
 
-
-// let divStock = document.getElementById('cookiesStock')
-// let spanStock = divStock .getElementsByTagName('span')
-// spanStock[0].innerHTML = newBakery._cookies
-
 let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
-// console.log(spanPerSecond)
 spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
 
 
 
-const newBuilding = new Building()
-// console.log(newBuilding)
+for( let i = 0 ; i < buildings.length- 3 ; i++){
 
+    let divBuilding = document.getElementById('buildings')
 
+    let divCursor = document.createElement('div')
+    divCursor.id=`building-${buildings[i].name.toLowerCase()}`
+    divCursor.className='locked disabled'
+    divBuilding.appendChild(divCursor)
 
-let divStore = document.getElementById('store')
-let divBuilding = document.getElementById('buildings')
-// console.log(divBuilding)
+    let divIcon = document.createElement('div')
+    divIcon.classList='icon'
+    divCursor.appendChild(divIcon)
 
-//
-let divCursor = document.createElement('div')
-// On lui ajoute un id, le mot building- en dur et pour le reste, la valeur name de l'objet cursor
-// On utilise la méthode ES6, les littéraux de gabarit pour concaténer le building- avec la valeur
-divCursor.id=`building-${buildings[0].name.toLowerCase()}`
-divCursor.className='locked disabled'
-divBuilding.appendChild(divCursor)
+    let divName = document.createElement('div')
+    divName.classList='name'
+    divName.innerHTML= buildings[i].name
+    divCursor.appendChild(divName)
 
+    let divCost = document.createElement('div')
+    divCost.classList='cost'
+    divCost.innerHTML= buildings[i].cost
+    divCursor.appendChild(divCost)
 
-function classChange(){
-
-    // cette variable permet de convertir le string en number 
-    let spanStockParse = parseInt(spanStock[0].innerHTML)
-   
-// si le stock est plus grand que le cout du batiment, alors on retire les class locked disabled et on ajoute unlocked et enable 
-    if( spanStockParse >= buildings[0].cost){
-        divCursor.classList.remove('locked')
-        divCursor.classList.remove('disabled')
-        divCursor.classList.add('unlocked')
-        divCursor.classList.add('enable')
+    let divNumber = document.createElement('div')
+    divNumber.classList='number'
+    divCursor.appendChild(divNumber)
+    
+    function classChange(){
+        let spanStockParse = parseInt(spanStock[0].innerHTML)
+       
+        if( spanStockParse >= buildings[0].cost){
+            divCursor.classList.remove('locked')
+            divCursor.classList.remove('disabled')
+            divCursor.classList.add('unlocked')
+            divCursor.classList.add('enable')
+        }
+        
+        else if( spanStockParse  < buildings[0].cost){
+            divCursor.classList.remove('enable')
+            divCursor.classList.add('disabled')
+        }
+        console.log(spanStock[0])
     }
     
-    else if( spanStockParse  < buildings[0].cost){
-        divCursor.classList.remove('enable')
-        divCursor.classList.add('disabled')
-    }
-    console.log(spanStock[0])
+    classChange()
 }
-// classChange()
-console.log(classChange())
 
 
-// classList.add ou remouve
 
-let divIcon = document.createElement('div')
-divIcon.classList='icon'
-divCursor.appendChild(divIcon)
-
-let divName = document.createElement('div')
-divName.classList='name'
-divName.innerHTML= buildings[0].name
-divCursor.appendChild(divName)
-
-let divCost = document.createElement('div')
-divCost.classList='cost'
-divCost.innerHTML= buildings[0].cost
-divCursor.appendChild(divCost)
-
-let divNumber = document.createElement('div')
-divNumber.classList='number'
-divCursor.appendChild(divNumber)
 
