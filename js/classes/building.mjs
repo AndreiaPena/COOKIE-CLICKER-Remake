@@ -1,16 +1,16 @@
 
 
 export class Building {
-    constructor(name = 'batiment', description = 'blabla', number = 0, cookiesPerSecond = 1, cost = 1000){
-        this._name = name;
-        this._description = description;
-        this._number = number;
-        this._cookiesPerSecond = cookiesPerSecond;
-        this._cost = cost
+    constructor(name, description, number, cookiesPerSecond , cost){
+        this._name = name ||  'batiment';
+        this._description = description  ||  'blabla';
+        this._number = number ||  0;
+        this._cookiesPerSecond = cookiesPerSecond ||  1;
+        this._cost = cost ||   1000;
     }
 
-    get name(){
-        return this._name;
-    }
+    // get name(){
+    //     return this._name;
+    // }
 }
 // console.log(Building)

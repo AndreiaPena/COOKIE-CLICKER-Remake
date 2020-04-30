@@ -48,14 +48,19 @@ divBuilding.appendChild(divCursor)
 
 
 function classChange(){
-    console.log(spanStock[0])
-    if(spanStock[0].innerHTML >= buildings[0].cost){
+
+    // cette variable permet de convertir le string en number 
+    let spanStockParse = parseInt(spanStock[0].innerHTML)
+   
+// si le stock est plus grand que le cout du batiment, alors on retire les class locked disabled et on ajoute unlocked et enable 
+    if( spanStockParse >= buildings[0].cost){
         divCursor.classList.remove('locked')
         divCursor.classList.remove('disabled')
         divCursor.classList.add('unlocked')
         divCursor.classList.add('enable')
-        console.log(spanStock[0])
-    }else if(spanStock[0] < buildings[0].cost){
+    }
+    
+    else if( spanStockParse  < buildings[0].cost){
         divCursor.classList.remove('enable')
         divCursor.classList.add('disabled')
     }

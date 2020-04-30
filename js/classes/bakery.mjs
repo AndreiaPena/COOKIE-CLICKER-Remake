@@ -1,10 +1,10 @@
 export class Bakery{
-    constructor(name = 'Shirini Foroushi', cookies = 16, buildings = [], cookiesPerClick = 1, cookiesPerSecond = 0){
-        this._name = name;
-        this._cookies = cookies;
-        this._buildings = buildings;
-        this._cookiesPerClick = cookiesPerClick;
-        this._cookiesPerSecond = cookiesPerSecond;
+    constructor(name, cookies, buildings, cookiesPerClick , cookiesPerSecond ){
+        this._name = name || 'Shirini Foroushi';
+        this._cookies = cookies || 16;
+        this._buildings = buildings || [];
+        this._cookiesPerClick = cookiesPerClick ||  1;
+        this._cookiesPerSecond = cookiesPerSecond || 0 ;  
     }
     
 }
