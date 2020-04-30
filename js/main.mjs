@@ -43,8 +43,29 @@ let divCursor = document.createElement('div')
 // On lui ajoute un id, le mot building- en dur et pour le reste, la valeur name de l'objet cursor
 // On utilise la méthode ES6, les littéraux de gabarit pour concaténer le building- avec la valeur
 divCursor.id=`building-${buildings[0].name.toLowerCase()}`
-divCursor.classList='locked disabled'
+divCursor.className='locked disabled'
 divBuilding.appendChild(divCursor)
+
+
+function classChange(){
+    console.log(spanStock[0])
+    if(spanStock[0].innerHTML >= buildings[0].cost){
+        divCursor.classList.remove('locked')
+        divCursor.classList.remove('disabled')
+        divCursor.classList.add('unlocked')
+        divCursor.classList.add('enable')
+        console.log(spanStock[0])
+    }else if(spanStock[0] < buildings[0].cost){
+        divCursor.classList.remove('enable')
+        divCursor.classList.add('disabled')
+    }
+    console.log(spanStock[0])
+}
+// classChange()
+console.log(classChange())
+
+
+// classList.add ou remouve
 
 let divIcon = document.createElement('div')
 divIcon.classList='icon'
