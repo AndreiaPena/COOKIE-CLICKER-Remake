@@ -38,17 +38,22 @@
     height: 10vh;
     width: 5vw;
   }
-  /* .unlocked .icon {
+
+  .unlocked .icon {
     background-image: url('/assets/images/buildings.png');
-    background-position-x: 35%;
+    background-position-x: left;
     background-position-y: top;
     height: 10vh;
     width: 5vw;
-  } */
+  }
+
+  .disabled .cost {
+    color: #ff6666;
+    /* opacity : black 50%; */
+  }
+
   .name {
-    font-size: 21 px;
+    font-size: 21px;
   }
   
-  .cost {
-    color: #edb8a9;
-  }
+  

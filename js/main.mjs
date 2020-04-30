@@ -32,11 +32,16 @@ spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
 const newBuilding = new Building()
 // console.log(newBuilding)
 
+
+
 let divStore = document.getElementById('store')
 let divBuilding = document.getElementById('buildings')
 // console.log(divBuilding)
 
+//
 let divCursor = document.createElement('div')
+// On lui ajoute un id, le mot building- en dur et pour le reste, la valeur name de l'objet cursor
+// On utilise la méthode ES6, les littéraux de gabarit pour concaténer le building- avec la valeur
 divCursor.id=`building-${buildings[0].name.toLowerCase()}`
 divCursor.classList='locked disabled'
 divBuilding.appendChild(divCursor)
