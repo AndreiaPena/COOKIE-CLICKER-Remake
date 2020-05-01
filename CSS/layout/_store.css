@@ -34,16 +34,16 @@
   
   .locked .icon {
     background-image: url('/assets/images/buildings.png');
-    background-position-x: 35%;
+    background-position-x: 34%;
     height: 10vh;
-    width: 5vw;
+    width: 4.5vw;
   }
 
   .unlocked .icon {
     background-image: url('/assets/images/buildings.png');
-    background-position-x: left;
+    background-position-x: 0%;
     height: 10vh;
-    width: 5vw;
+    width: 4.5vw;
   }
 
   .name {
@@ -83,6 +83,8 @@
     position: absolute;
     top: 0;
   }
+
+  
  
   
   

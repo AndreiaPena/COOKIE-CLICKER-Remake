@@ -19,19 +19,20 @@ spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
 
 
 
-for( let i = 0 ; i < buildings.length - 3 ; i++){
+for( let i = 0 ; i < buildings.length- 3 ; i++){
 
     let divBuilding = document.getElementById('buildings')
+
     let divTuile = document.createElement('div')
     
     divTuile.id=`building-${buildings[i].name.toLowerCase()}`
     divTuile.className='locked disabled'
     divBuilding.appendChild(divTuile)
 
-    let divIcon = document.createElement('div')
+    var divIcon = document.createElement('div')
     divIcon.classList='icon'
     divTuile.appendChild(divIcon)
-
+        
     let divName = document.createElement('div')
     divName.classList='name'
     divName.innerHTML= buildings[i].name
@@ -47,7 +48,7 @@ for( let i = 0 ; i < buildings.length - 3 ; i++){
     divTuile.appendChild(divNumber)
     
     function classChange(){
-// il nous faut faire en sorte que locked n'apparaissent plus dès qu'il a été une fois unlocked
+        // il nous faut faire en sorte que locked n'apparaissent plus dès qu'il a été une fois unlocked
         let spanStockParse = parseInt(spanStock[0].innerHTML)
        
         if( spanStockParse >= buildings[0].cost){ // si 16 >= 15
@@ -61,39 +62,36 @@ for( let i = 0 ; i < buildings.length - 3 ; i++){
             divTuile.classList.remove('enable')
             divTuile.classList.add('disabled')
         }
-
+        // console.log(spanStock[0])
     }
     
     classChange()
 }
 
-
+let count = 0
+        for (let j = 1; j < buildings.length - 3 ; j++){
+            count = count+= 6
+            divIcon.style.backgroundPositionY=`${count}%`
+        }
 
 // silhouette du cursor et de la grandma , ça marche en manuel
+// let divLocked = document.getElementsByClassName('locked')
+// let divUnlocked = document.getElementsByClassName('unlocked')
 
-
-function IconChange(){
-
-    let divLocked = document.getElementsByClassName('locked')
-    let divUnlocked = document.getElementsByClassName('unlocked')
-
-    if ( divLocked.ClassList = 'locked'){
+// if ( divLocked.ClassList = 'locked'){
     
-        let divLockedCursor = divLocked[0].querySelector('.icon')
-        let divLockedGrandma = divLocked[1].querySelector('.icon')
+// let divLockedCursor = divLocked[0].querySelector('.icon')
+// let divLockedGrandma = divLocked[1].querySelector('.icon')
 
-        divLockedCursor.style.backgroundPositionY='0%'
-        divLockedGrandma.style.backgroundPositionY='6%'
-    }
+// divLockedCursor.style.backgroundPositionY='0%'
+// divLockedGrandma.style.backgroundPositionY='6%'
+// }
 
-    else if ( divUnlocked.ClassList = 'unlocked'){
+// if ( divUnlocked.ClassList = 'locked'){
 
-        let divUnlockedCursor = divUnlocked[0].querySelector('.icon')
-        let divUnlockedGrandma = divUnlocked[1].querySelector('.icon')
+// let divUnlockedCursor = divUnlocked[0].querySelector('.icon')
+// let divUnlockedGrandma = divUnlocked[1].querySelector('.icon')
 
-        divUnlockedCursor.style.backgroundPositionY='0%'
-        divUnlockedGrandma.style.backgroundPositionY='6%'
-    }
-}
-
-IconChange()
+// divUnlockedCursor.style.backgroundPositionY='0%'
+// divUnlockedGrandma.style.backgroundPositionY='6%'
+// }
