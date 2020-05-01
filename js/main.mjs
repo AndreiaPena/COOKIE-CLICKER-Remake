@@ -66,6 +66,23 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
     }
     
     classChange()
+
+    
+    let spanStockParse = parseInt(spanStock[0].innerHTML)
+       
+
+        if( spanStockParse >= buildings[i].cost){ // si 16 >= 15
+            divTuile.classList.remove('locked')
+            divTuile.classList.remove('disabled')
+            divTuile.classList.add('unlocked')
+            divTuile.classList.add('enable')
+        }
+        
+        else if( spanStockParse  < buildings[i].cost){ // si 0 < 15
+            divTuile.classList.remove('enable')
+            divTuile.classList.add('disabled')
+        } 
+    
 }
 
 let count = 0
