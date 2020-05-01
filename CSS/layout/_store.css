@@ -26,7 +26,7 @@
     height: 10vh;
     cursor:pointer;
     position: relative;
-    z-index: 2;
+    /* z-index: 1; */
   }
 
   #buildings > div:hover {
@@ -34,6 +34,13 @@
     transition : 0.5s ;
   }
   
+  .locked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 35%;
+    /* background-position-y: 5%; */
+    height: 10vh;
+    width: 5vw;
+  }
 
   .unlocked .icon {
     background-image: url('/assets/images/buildings.png');
@@ -43,13 +50,7 @@
     width: 5vw;
   }
 
-  .locked .icon {
-    background-image: url('/assets/images/buildings.png');
-    background-position-x: 35%;
-    background-position-y: top;
-    height: 10vh;
-    width: 5vw;
-  }
+  
 
   .name {
     font-size: 21px;
@@ -81,11 +82,15 @@
     color: #ff6666;
   }
 
-  .disabled::after {
-    z-index: 1;
+  #buildings .disabled::after{
+    content: '';
     background-color: black;
     opacity : 0.5;
-   }
+    height: 10vh;
+    width: 50vw;
+    position: absolute;
+    top: 0;
+  }
  
   
   

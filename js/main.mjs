@@ -30,6 +30,11 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
 
     let divIcon = document.createElement('div')
     divIcon.classList='icon'
+        // for (let i=0; i<buildings.length-3; i= i+5){
+        //     divIcon.style.backgroundPositionY=`${i}'%'`
+        // }
+    divIcon.style.backgroundPositionY='0%'
+console.log(divIcon)
     divCursor.appendChild(divIcon)
 
     let divName = document.createElement('div')
@@ -60,7 +65,7 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
             divCursor.classList.remove('enable')
             divCursor.classList.add('disabled')
         }
-        console.log(spanStock[0])
+        // console.log(spanStock[0])
     }
     
     classChange()
