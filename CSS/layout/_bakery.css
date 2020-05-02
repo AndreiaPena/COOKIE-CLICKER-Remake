@@ -32,6 +32,7 @@
     background-size: 225px;
     filter: drop-shadow(0 0 1rem #ffffff);   
     cursor:pointer;
+    position: relative;
 }
 
 #bigCookie:hover{
@@ -40,3 +41,19 @@
 #bigCookie:active{
     background-size: 213px;
 }
+
+#bigCookie .up{
+font-size: 21px;
+font-weight: bold;
+position: absolute;
+animation-name: up;
+animation-duration: 3s;
+}
+
+
+@keyframes up {
+    0%   { opacity:1;  top:200px;}
+    20% { opacity: 0.5; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0; top:0px; }
+  }

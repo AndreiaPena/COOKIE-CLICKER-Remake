@@ -5,31 +5,44 @@ import {buildings} from './data.mjs';
 const newBakery = new Bakery()
 const newBuilding = new Building()
 
-
-
+///////////////////////////////////////// RECUPERATION DE DIV POUR CLASS BAKERY/////////////////////////////////////////
 
 let h2Bakery = document.querySelector('h2')
 h2Bakery.innerHTML = newBakery._name
 
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
-// let spanStock = document.querySelector('#cookiesStock span')
+
+// REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
 spanStock[0].innerHTML = newBakery._cookies
-
-let cookieClick = document.querySelector('#bigCookie')
-console.log(cookieClick)
-
-cookieClick.addEventListener('click', ()=>{
-    spanStock[0].innerHTML = newBakery.bakeCookies()
-
-})
-
-
-
+// REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
 
 let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
 spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
 
 
+let divBigCookie = document.querySelector('#bigCookie')
+///////////////////////////////////////// GESTIONNAIRE DEVENEMENT AU CLIC /////////////////////////////////////////
+
+
+divBigCookie.addEventListener('click', (event)=>{
+    spanStock[0].innerHTML = newBakery.bakeCookies()
+
+    let divPlusOne = document.createElement('div')
+    divPlusOne.className = 'up'
+    divPlusOne.innerHTML = `+${newBakery._cookiesPerClick}`
+    let test = divPlusOne.style.top=`${event.clientX + 225}px`
+    console.log(test)
+    let test1 = divPlusOne.style.left=`${event.clientY - 225}px`
+    console.log(test1)
+    divBigCookie.appendChild(divPlusOne)
+
+    divPlusOne.addEventListener('animationend', ()=>{
+        divBigCookie.removeChild(divPlusOne)
+    })
+})
+
+
+///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 
 for( let i = 0 ; i < buildings.length- 3 ; i++){
 
@@ -81,6 +94,7 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
 
     
     var spanStockParse = parseInt(spanStock[0].innerHTML)
+    console.log(spanStockParse)
         if( spanStockParse >= buildings[i].cost){ // si 16 >= 15
             divTuile.classList.remove('locked')
             divTuile.classList.remove('disabled')
