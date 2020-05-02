@@ -7,12 +7,24 @@ const newBuilding = new Building()
 
 
 
+
 let h2Bakery = document.querySelector('h2')
 h2Bakery.innerHTML = newBakery._name
 
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
 // let spanStock = document.querySelector('#cookiesStock span')
 spanStock[0].innerHTML = newBakery._cookies
+
+let cookieClick = document.querySelector('#bigCookie')
+console.log(cookieClick)
+
+cookieClick.addEventListener('click', ()=>{
+    spanStock[0].innerHTML = newBakery.bakeCookies()
+
+})
+
+
+
 
 let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
 spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
@@ -68,9 +80,7 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
     classChange()
 
     
-    let spanStockParse = parseInt(spanStock[0].innerHTML)
-       
-
+    var spanStockParse = parseInt(spanStock[0].innerHTML)
         if( spanStockParse >= buildings[i].cost){ // si 16 >= 15
             divTuile.classList.remove('locked')
             divTuile.classList.remove('disabled')
@@ -82,7 +92,6 @@ for( let i = 0 ; i < buildings.length- 3 ; i++){
             divTuile.classList.remove('enable')
             divTuile.classList.add('disabled')
         } 
-    
 }
 
 let count = 0
