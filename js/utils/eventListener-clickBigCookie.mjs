@@ -5,7 +5,7 @@ sonClickCreation()
 let divBigCookie = document.querySelector('#bigCookie')
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
 
-export const clickBigCookie = (element) => {
+export const clickBigCookie = () => {
 
     divBigCookie.addEventListener('click', (event)=>{
         spanStock[0].innerHTML = newBakery.bakeCookies()
@@ -13,10 +13,8 @@ export const clickBigCookie = (element) => {
         let divPlusOne = document.createElement('div')
         divPlusOne.className = 'up'
         divPlusOne.innerHTML = `+${newBakery._cookiesPerClick}`
-        let test = divPlusOne.style.top=`${event.offsetY}px`
-        console.log(test)
-        let test1 = divPlusOne.style.left=`${event.offsetX}px`
-        console.log(test1)
+        divPlusOne.style.inset=`${event.offsetY - 20}px ${event.offsetX - 10}px`
+        
         divBigCookie.appendChild(divPlusOne)
 
         divPlusOne.addEventListener('animationend', ()=>{
@@ -25,9 +23,8 @@ export const clickBigCookie = (element) => {
 
         const clickSon = document.getElementsByClassName('clickSon')
         clickSon[Math.floor(Math.random() * (7-1)+1)].play()
+
     })
 }
-
-
 
 
