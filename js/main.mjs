@@ -30,21 +30,39 @@ divBigCookie.addEventListener('click', (event)=>{
     let divPlusOne = document.createElement('div')
     divPlusOne.className = 'up'
     divPlusOne.innerHTML = `+${newBakery._cookiesPerClick}`
-    let test = divPlusOne.style.top=`${event.clientX + 225}px`
+    let test = divPlusOne.style.top=`${event.offsetY}px`
     console.log(test)
-    let test1 = divPlusOne.style.left=`${event.clientY - 225}px`
+    let test1 = divPlusOne.style.left=`${event.offsetX}px`
     console.log(test1)
     divBigCookie.appendChild(divPlusOne)
 
     divPlusOne.addEventListener('animationend', ()=>{
         divBigCookie.removeChild(divPlusOne)
     })
+
+    let clickSon = document.getElementsByClassName('clickSon')
+    clickSon[Math.floor(Math.random() * (7-1)+1)].play()
+
 })
+
+
+
+
+////////////////////////////////////////// fichiers SON click //////////////////////////////
+
+for (let i = 1; i < 8; i++) {
+    
+    var divSon = document.createElement('audio')
+    divSon.src=`/assets/sounds/click${i}.mp3`
+    divSon.className='clickSon'
+    divBigCookie.appendChild(divSon)
+
+}
 
 
 ///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 
-for( let i = 0 ; i < buildings.length- 3 ; i++){
+for ( let i = 0 ; i < buildings.length- 3 ; i++){
 
     let divBuilding = document.getElementById('buildings')
 
