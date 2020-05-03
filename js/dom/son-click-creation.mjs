@@ -1,6 +1,9 @@
-let divBigCookie = document.querySelector('#bigCookie')
+
 
 export const sonClickCreation=() => {
+
+    let divBigCookie = document.querySelector('#bigCookie')
+    
     for (let i = 1; i < 8; i++) {
         
         var divSon = document.createElement('audio')

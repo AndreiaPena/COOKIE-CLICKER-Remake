@@ -41,20 +41,12 @@
     box-shadow: inset 0px 0px 15px 3px #ffffff;
     transition : 0.5s ;
   }
-  
-  .locked .icon {
-    background-image: url('/assets/images/buildings.png');
-    background-position-x: 34%;
-    height: 10vh;
-    width: 4.5vw;
-  }
 
-  .unlocked .icon {
-    background-image: url('/assets/images/buildings.png');
-    background-position-x: 0%;
-    height: 10vh;
-    width: 4.5vw;
+  #buildings > .enabled:active {
+    box-shadow: inset 0px 0px 15px 3px #000000;
+    transition : 0.5s ;
   }
+  
 
   .name {
     font-size: 21px;
@@ -92,6 +84,36 @@
     width: 100%;
     position: absolute;
     top: 0;
+  }
+
+  .locked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 34%;
+    height: 10vh;
+    width: 4.5vw;
+  }
+
+  .unlocked .icon {
+    background-image: url('/assets/images/buildings.png');
+    background-position-x: 0%;
+    height: 10vh;
+    width: 4.5vw;
+  }
+
+  #building-cursor .icon {
+    background-position-y: 0%;
+  }
+  #building-grandma .icon {
+    background-position-y: 5.9%;
+  }
+  #building-farm .icon {
+    background-position-y: 17.5%;
+  }
+  #building-mine .icon {
+    background-position-y: 23.5%;
+  }
+  #building-factory .icon {
+    background-position-y: 29.4%;
   }
 
   

@@ -6,11 +6,15 @@ export const newBuilding = new Building()
 
 import {buildings} from './data.mjs';
 
-import {tuilesCreation} from './dom/tuiles-creation.mjs'
-tuilesCreation()
+import {autoTuiles} from './dom/automatisation-tuiles.mjs'
+autoTuiles()
 
 import {clickBigCookie} from './utils/eventListener-clickBigCookie.mjs'
 clickBigCookie()
 
-import {bakeryContent} from './dom/bakery-injectionDynamicContent.mjs'
-bakeryContent()
+
+
+
+
+
+

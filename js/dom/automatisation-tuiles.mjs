@@ -1,11 +1,23 @@
 import {buildings} from '/js/data.mjs';
-
-let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
-
-export const tuilesCreation = (element) => {
+import {newBakery} from '/js/main.mjs';
 
 
-    for( let i = 0 ; i < buildings.length- 3 ; i++){
+export const autoTuiles = () => {
+    
+    let h2Bakery = document.querySelector('h2')
+    h2Bakery.innerHTML = newBakery._name
+
+    let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
+
+    // REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
+    spanStock[0].innerHTML = newBakery._cookies
+    // REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
+
+    let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
+    spanPerSecond[0].innerHTML = newBakery._cookiesPerSecond
+
+
+    for( let i = 0 ; i < buildings.length; i++){
 
         let divBuilding = document.getElementById('buildings')
 
@@ -33,26 +45,6 @@ export const tuilesCreation = (element) => {
         divNumber.classList='number'
         divTuile.appendChild(divNumber)
         
-        function classChange(){
-            // il nous faut faire en sorte que locked n'apparaissent plus dès qu'il a été une fois unlocked
-            let spanStockParse = parseInt(spanStock[0].innerHTML)
-        
-            if( spanStockParse >= buildings[0].cost){ // si 16 >= 15
-                divTuile.classList.remove('locked')
-                divTuile.classList.remove('disabled')
-                divTuile.classList.add('unlocked')
-                divTuile.classList.add('enable')
-            }
-            
-            else if( spanStockParse  < buildings[0].cost){ // si 0 < 15
-                divTuile.classList.remove('enable')
-                divTuile.classList.add('disabled')
-            }
-            // console.log(spanStock[0])
-        }
-        
-        classChange()
-
         
         let spanStockParse = parseInt(spanStock[0].innerHTML)
         
@@ -71,11 +63,11 @@ export const tuilesCreation = (element) => {
         
     }
 
-    let count = 0
-            for (let j = 1; j < buildings.length - 3 ; j++){
-                count = count+= 6
-                divIcon.style.backgroundPositionY=`${count}%`
-            }
+    // let count = 0
+    //         for (let j = 1; j < buildings.length - 3 ; j++){
+    //             count = count+= 6
+    //             divIcon.style.backgroundPositionY=`${count}%`
+    //         }
 
 }
 
