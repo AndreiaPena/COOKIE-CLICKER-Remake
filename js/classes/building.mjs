@@ -1,16 +1,19 @@
-
+import { buildings } from "../data.mjs";
 
 export class Building {
     constructor(name, description, number, cookiesPerSecond , cost){
-        this._name = name ||  'batiment';
-        this._description = description  ||  'blabla';
-        this._number = number ||  0;
-        this._cookiesPerSecond = cookiesPerSecond ||  1;
-        this._cost = cost ||   1000;
+        this._name = name || `${buildings.name}`;
+        this._description = description  || `${buildings.description}`;
+        this._number = number ||  3;
+        this._cookiesPerSecond = cookiesPerSecond || `${buildings.cookiesPerSecond}`;
+        this._cost = cost ||   `${buildings.cost}`;
     }
 
-    // get name(){
-    //     return this._name;
-    // }
+    buy(){
+        return (this._number++) && (Math.floor(this._cost *= 1.15))
+    }
+    
 }
-// console.log(Building)
+// buy()
+// console.log(buy())
+// console.log(newBuilding)
