@@ -2,7 +2,6 @@ import {Bakery} from './classes/bakery.mjs';
 export const newBakery = new Bakery()
 
 import {Building} from './classes/building.mjs';
-const newBuilding = new Building()
 
 import {buildings} from './data.mjs';
 
@@ -24,7 +23,7 @@ clickBigCookie()
 
 
 for (  let i=0; i< buildings.length; i++){
-    const newBuilding = new Building(buildings[i].name,buildings[i].description,0,buildings[i].cookiesPerSecond, buildings[i].cost)
+    const newBuilding = new Building(buildings[i].name,buildings[i].description,0,buildings[i].cookiesPerSecond,buildings[i].cost)
     newBuilding.buy()
     console.log(newBuilding)
 }
