@@ -125,3 +125,6 @@ padding: 2px;
 }
 
 
+.invisible {
+  display : none;
+}

@@ -42,6 +42,7 @@ divBigCookie.addEventListener('click', (event)=>{
     let clickSon = document.getElementsByClassName('clickSon')
     clickSon[Math.floor(Math.random() * (7-1)+1)].play()
     
+
 })
 
 
@@ -74,14 +75,14 @@ for (let i = 1; i < 8; i++) {
 
 ///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 const creationBuilding = () => {  
-for ( let i = 0 ; i < 2 ; i++){
+for ( let i = 0 ; i < 5 ; i++){
 
     let divBuilding = document.getElementById('buildings')
 
     let divTuile = document.createElement('div')
     
     divTuile.id=`building-${buildings[i].name.toLowerCase()}`
-    divTuile.className='locked disabled'
+    divTuile.className='locked disabled invisible all'
     divBuilding.appendChild(divTuile)
 
     let divIcon = document.createElement('div')
@@ -104,6 +105,27 @@ for ( let i = 0 ; i < 2 ; i++){
     divTuile.appendChild(divNumber)
     }
 }
+creationBuilding()
+
+
+let tutu = document.getElementsByClassName('all')
+
+if( newBakery.cookies == 0){ 
+   tutu[0].classList.remove('invisible')
+   tutu[1].classList.remove('invisible')
+}
+if( newBakery.cookies >= 100){ 
+    tutu[2].classList.remove('invisible')
+ }
+ if( newBakery.cookies >= 1100){ 
+    tutu[3].classList.remove('invisible')
+ }
+ if( newBakery.cookies >= 12000){ 
+    tutu[4].classList.remove('invisible')
+ }
+
+
+
 
 // ////////////////  Activation des tuiles et affichage des suivantes
 
@@ -119,4 +141,3 @@ for ( let i = 0 ; i < 2 ; i++){
 // //////////////    Jouer un son aléatoire au clic
 
 
-creationBuilding()
