@@ -100,9 +100,23 @@ for ( let i = 0 ; i < 2 ; i++){
 
     let divNumber = document.createElement('div')
     divNumber.className='number'
-    divNumber.innerHTML= buildings[i].cost
+    divNumber.innerHTML= newBuilding.number
     divTuile.appendChild(divNumber)
+    }
 }
-}
+
+// ////////////////  Activation des tuiles et affichage des suivantes
+
+
+// ///////////////   Mettre à jour la tuile dans le Store
+// let divBuy = document.getElementById(`building-${buildings[i].name.toLowerCase()}`)
+// divBuy.addEventListener('click', (event)=>{
+  
+
+// }    
+
+
+// //////////////    Jouer un son aléatoire au clic
+
 
 creationBuilding()

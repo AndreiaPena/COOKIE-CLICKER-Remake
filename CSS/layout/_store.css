@@ -115,6 +115,13 @@ padding: 2px;
   background-position-y: 29.4%;
 }
 
-
+.number {
+  position:absolute;
+  font-size: 30px;
+  font-weight: bold;
+  color:rgba(49, 45, 45, 0.479);
+  right:10px;
+  top:20px;
+}
 
 
