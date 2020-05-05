@@ -36,8 +36,8 @@ divBigCookie.addEventListener('click', (event)=>{
         divBigCookie.removeChild(divPlusOne)
     })
 
-    audio()
-    let clickSon = document.getElementsByClassName('clickSon')
+    audioCookie()
+    let clickSon = document.getElementsByClassName('clickCookie')
     clickSon[Math.floor(Math.random() * (7-1)+1)].play()
     
 })
@@ -67,16 +67,18 @@ const switchBuilding = (newBakery) => {
 
 
 ////////////////////////////////////////// fichiers SON click //////////////////////////////
-const audio = () => {  
+const audioCookie = () => {  
 for (let i = 1; i < 8; i++) {
     
-    var divSon = document.createElement('audio')
+    let divSon = document.createElement('audio')
     divSon.src=`/assets/sounds/click${i}.mp3`
-    divSon.className='clickSon'
+    divSon.className='clickCookie'
     divBigCookie.appendChild(divSon)
 
 }
 }
+
+
 
 ///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 const creationBuilding = () => {  
@@ -142,9 +144,25 @@ function handleCheck() {
     newBuilding.buy() 
     divNumber.innerHTML = newBuilding.number
     divCost.innerHTML = newBuilding.cost
+
+    audioTuiles()
+    let clickSon = document.getElementsByClassName('clickTuile')
+    clickSon[Math.floor(Math.random() * (4-1)+1)].play()
 }
 
 
 // //////////////    Jouer un son aléatoire au clic
 
+const audioTuiles = () => {  
+    for ( let i = 0 ; i < buildings.length ; i++){
 
+        let tuile = document.getElementById('buildings').childNodes
+        for (let j = 1; j < 5; j++) {
+        
+            var divSon = document.createElement('audio')
+            divSon.src=`/assets/sounds/buy${j}.mp3`
+            divSon.className='clickTuile'
+            tuile[i].appendChild(divSon)
+        }
+    }
+}
