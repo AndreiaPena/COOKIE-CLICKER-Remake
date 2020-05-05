@@ -25,6 +25,13 @@ export class Building {
         return this._cookiesPerSecond;
     }
 
+    set number(newNumber){
+        this._number = newNumber
+    }
+    set cost(newCost){
+        this._cost = newCost
+    }
+    
     buy(){
         this._number++
         return this._cost = Math.ceil(this._cost *= 1.15);

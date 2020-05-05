@@ -1,3 +1,4 @@
+
 import {Bakery} from './classes/bakery.mjs';
 import {Building} from './classes/building.mjs';
 import {buildings} from './data.mjs';
@@ -11,10 +12,7 @@ let h2Bakery = document.querySelector('h2')
 h2Bakery.innerHTML = newBakery.name
 
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
-
-// REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
 spanStock[0].innerHTML = newBakery.cookies
-// REVOIR PARTIE DU SPAN QUI ACTIVE LES TUILES 
 
 let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
 spanPerSecond[0].innerHTML = newBakery.cookiesPerSecond
@@ -42,7 +40,6 @@ divBigCookie.addEventListener('click', (event)=>{
     let clickSon = document.getElementsByClassName('clickSon')
     clickSon[Math.floor(Math.random() * (7-1)+1)].play()
     
-
 })
 
 
@@ -55,6 +52,7 @@ const switchBuilding = (newBakery) => {
             divCursorGrandma.classList.remove('disabled')
             divCursorGrandma.classList.add('unlocked')
             divCursorGrandma.classList.add('enable')
+
 
             let divTestSuivante = document.getElementById(`building-${buildings[i + 1].name.toLowerCase()}`)
             divTestSuivante.classList.remove('locked')
@@ -89,7 +87,7 @@ for ( let i = 0 ; i < buildings.length ; i++){
     let divTuile = document.createElement('div')
     
     divTuile.id=`building-${buildings[i].name.toLowerCase()}`
-    divTuile.className='locked disabled '
+    divTuile.className='locked disabled all'
     divBuilding.appendChild(divTuile)
 
     let divIcon = document.createElement('div')
@@ -108,7 +106,6 @@ for ( let i = 0 ; i < buildings.length ; i++){
 
     let divNumber = document.createElement('div')
     divNumber.className='number'
-    divNumber.innerHTML= newBuilding.number
     divTuile.appendChild(divNumber)
 
     if (i < buildings.length - 3){
@@ -120,20 +117,32 @@ for ( let i = 0 ; i < buildings.length ; i++){
     }
 }
 
-
-
-
 creationBuilding()
 
 
+// cherchons les enfants de la div avec l'id buildings, avec childNodes, on peut les récuperer
+const divMere = document.getElementById('buildings').childNodes
 
 
-// ///////////////   Mettre à jour la tuile dans le Store
-// let divBuy = document.getElementById(`building-${buildings[i].name.toLowerCase()}`)
-// divBuy.addEventListener('click', (event)=>{
-  
+ // ForEach() est une méthode qui permet d'executer une fonction donnée sur chaque élement du tableau
+        // donc ça se traduit ici par :  forEach, pour chaque element de la divMère (ses enfants qui sont les tuiles)
+        // à chacunes de ces tuiles on vient appliquer un gestionnaire d'evenement au click
+divMere.forEach(tuile => tuile.addEventListener('click', handleCheck));
 
-// }    
+
+//la fonction handleCheck, est la fonction qu'on appelle à la ligne 130
+// Elle nous permet de modifier les valeurs de la div cost et number 
+// ainsi à chaque click, elle permet d'activer la méthode buy (ligne 142) 
+//pour voir ce que fait buy() aller voir la page de la class Building
+function handleCheck() {
+    let divNumber = this.querySelector('.number')
+    let divCost = this.querySelector('.cost')
+    newBuilding.number = divNumber.innerHTML
+    newBuilding.cost= divCost.innerHTML  
+    newBuilding.buy() 
+    divNumber.innerHTML = newBuilding.number
+    divCost.innerHTML = newBuilding.cost
+}
 
 
 // //////////////    Jouer un son aléatoire au clic
