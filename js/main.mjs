@@ -49,12 +49,19 @@ divBigCookie.addEventListener('click', (event)=>{
 const switchBuilding = (newBakery) => {  
     for ( let i = 0 ; i < buildings.length ; i++){
         if( newBakery.cookies >= buildings[i].cost){ // si 16 >= 15
-            let divTest = document.getElementById(`building-${buildings[i].name.toLowerCase()}`)
+            let divCursorGrandma = document.getElementById(`building-${buildings[i].name.toLowerCase()}`)
 
-            divTest.classList.remove('locked')
-            divTest.classList.remove('disabled')
-            divTest.classList.add('unlocked')
-            divTest.classList.add('enable')
+            divCursorGrandma.classList.remove('locked')
+            divCursorGrandma.classList.remove('disabled')
+            divCursorGrandma.classList.add('unlocked')
+            divCursorGrandma.classList.add('enable')
+
+            let divTestSuivante = document.getElementById(`building-${buildings[i + 1].name.toLowerCase()}`)
+            divTestSuivante.classList.remove('locked')
+            divTestSuivante.classList.add('unlocked')
+
+            let tuileTroisieme = document.getElementById(`building-${buildings[i + 2].name.toLowerCase()}`);
+            tuileTroisieme.style.display = "flex"
         }
     }
 }
@@ -75,14 +82,14 @@ for (let i = 1; i < 8; i++) {
 
 ///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 const creationBuilding = () => {  
-for ( let i = 0 ; i < 5 ; i++){
+for ( let i = 0 ; i < buildings.length ; i++){
 
     let divBuilding = document.getElementById('buildings')
 
     let divTuile = document.createElement('div')
     
     divTuile.id=`building-${buildings[i].name.toLowerCase()}`
-    divTuile.className='locked disabled invisible all'
+    divTuile.className='locked disabled '
     divBuilding.appendChild(divTuile)
 
     let divIcon = document.createElement('div')
@@ -103,31 +110,22 @@ for ( let i = 0 ; i < 5 ; i++){
     divNumber.className='number'
     divNumber.innerHTML= newBuilding.number
     divTuile.appendChild(divNumber)
+
+    if (i < buildings.length - 3){
+        divTuile.style.display = "flex"
+    } else {
+        divTuile.style.display = "none"
+    }
+
     }
 }
+
+
+
+
 creationBuilding()
 
 
-let tutu = document.getElementsByClassName('all')
-
-if( newBakery.cookies == 0){ 
-   tutu[0].classList.remove('invisible')
-   tutu[1].classList.remove('invisible')
-}
-if( newBakery.cookies >= 100){ 
-    tutu[2].classList.remove('invisible')
- }
- if( newBakery.cookies >= 1100){ 
-    tutu[3].classList.remove('invisible')
- }
- if( newBakery.cookies >= 12000){ 
-    tutu[4].classList.remove('invisible')
- }
-
-
-
-
-// ////////////////  Activation des tuiles et affichage des suivantes
 
 
 // ///////////////   Mettre à jour la tuile dans le Store
