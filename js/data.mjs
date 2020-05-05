@@ -1,4 +1,4 @@
-export const buildings = [
+export const data = [
   {
     name: "Cursor",   
     cost: 15,

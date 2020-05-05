@@ -1,10 +1,13 @@
-
 import {Bakery} from './classes/bakery.mjs';
 import {Building} from './classes/building.mjs';
-import {buildings} from './data.mjs';
+import {data} from './data.mjs';
 
 const newBakery = new Bakery()
 const newBuilding = new Building()
+ 
+
+// newBakery.buyBuilding(???)
+
 
 ///////////////////////////////////////// RECUPERATION DE DIV POUR CLASS BAKERY/////////////////////////////////////////
 
@@ -44,9 +47,9 @@ divBigCookie.addEventListener('click', (event)=>{
 
 
 const switchBuilding = (newBakery) => {  
-    for ( let i = 0 ; i < buildings.length ; i++){
-        if( newBakery.cookies >= buildings[i].cost){ // si 16 >= 15
-            let divCursorGrandma = document.getElementById(`building-${buildings[i].name.toLowerCase()}`)
+    for ( let i = 0 ; i < data.length ; i++){
+        if( newBakery.cookies >= data[i].cost){ // si 16 >= 15
+            let divCursorGrandma = document.getElementById(`building-${data[i].name.toLowerCase()}`)
 
             divCursorGrandma.classList.remove('locked')
             divCursorGrandma.classList.remove('disabled')
@@ -54,11 +57,11 @@ const switchBuilding = (newBakery) => {
             divCursorGrandma.classList.add('enable')
 
 
-            let divTestSuivante = document.getElementById(`building-${buildings[i + 1].name.toLowerCase()}`)
+            let divTestSuivante = document.getElementById(`building-${data[i + 1].name.toLowerCase()}`)
             divTestSuivante.classList.remove('locked')
             divTestSuivante.classList.add('unlocked')
 
-            let tuileTroisieme = document.getElementById(`building-${buildings[i + 2].name.toLowerCase()}`);
+            let tuileTroisieme = document.getElementById(`building-${data[i + 2].name.toLowerCase()}`);
             tuileTroisieme.style.display = "flex"
         }
     }
@@ -82,13 +85,13 @@ for (let i = 1; i < 8; i++) {
 
 ///////////////////////////////////////// BOUCLE FOR /////////////////////////////////////////
 const creationBuilding = () => {  
-for ( let i = 0 ; i < buildings.length ; i++){
+for ( let i = 0 ; i < data.length ; i++){
 
     let divBuilding = document.getElementById('buildings')
 
     let divTuile = document.createElement('div')
     
-    divTuile.id=`building-${buildings[i].name.toLowerCase()}`
+    divTuile.id=`building-${data[i].name.toLowerCase()}`
     divTuile.className='locked disabled all'
     divBuilding.appendChild(divTuile)
 
@@ -98,19 +101,19 @@ for ( let i = 0 ; i < buildings.length ; i++){
         
     let divName = document.createElement('div')
     divName.className='name'
-    divName.innerHTML= buildings[i].name
+    divName.innerHTML= data[i].name
     divTuile.appendChild(divName)
 
     let divCost = document.createElement('div')
     divCost.className='cost'
-    divCost.innerHTML= buildings[i].cost
+    divCost.innerHTML= data[i].cost
     divTuile.appendChild(divCost)
 
     let divNumber = document.createElement('div')
     divNumber.className='number'
     divTuile.appendChild(divNumber)
 
-    if (i < buildings.length - 3){
+    if (i < data.length - 3){
         divTuile.style.display = "flex"
     } else {
         divTuile.style.display = "none"
@@ -125,17 +128,9 @@ creationBuilding()
 // cherchons les enfants de la div avec l'id buildings, avec childNodes, on peut les récuperer
 const divMere = document.getElementById('buildings').childNodes
 
-
- // ForEach() est une méthode qui permet d'executer une fonction donnée sur chaque élement du tableau
-        // donc ça se traduit ici par :  forEach, pour chaque element de la divMère (ses enfants qui sont les tuiles)
-        // à chacunes de ces tuiles on vient appliquer un gestionnaire d'evenement au click
 divMere.forEach(tuile => tuile.addEventListener('click', handleCheck));
 
 
-//la fonction handleCheck, est la fonction qu'on appelle à la ligne 130
-// Elle nous permet de modifier les valeurs de la div cost et number 
-// ainsi à chaque click, elle permet d'activer la méthode buy (ligne 142) 
-//pour voir ce que fait buy() aller voir la page de la class Building
 function handleCheck() {
     let divNumber = this.querySelector('.number')
     let divCost = this.querySelector('.cost')
@@ -154,7 +149,7 @@ function handleCheck() {
 // //////////////    Jouer un son aléatoire au clic
 
 const audioTuiles = () => {  
-    for ( let i = 0 ; i < buildings.length ; i++){
+    for ( let i = 0 ; i < data.length ; i++){
 
         let tuile = document.getElementById('buildings').childNodes
         for (let j = 1; j < 5; j++) {
@@ -166,3 +161,6 @@ const audioTuiles = () => {
         }
     }
 }
+
+newBakery.buyBuilding()
+console.log(newBakery.buyBuilding())

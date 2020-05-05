@@ -34,7 +34,9 @@ export class Building {
     
     buy(){
         this._number++
-        return this._cost = Math.ceil(this._cost *= 1.15);
+        return this._cost = Math.ceil(this._cost * 1.15);
+        
      }
-     
+    
+
 }
