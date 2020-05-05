@@ -134,9 +134,11 @@ divMere.forEach(tuile => tuile.addEventListener('click', handleCheck));
 function handleCheck() {
     let divNumber = this.querySelector('.number')
     let divCost = this.querySelector('.cost')
+    // let divName = this.querySelector('.name")
     newBuilding.number = divNumber.innerHTML
     newBuilding.cost= divCost.innerHTML  
     newBuilding.buy() 
+    // ???.buyBuilding(divName.innerHTML)
     divNumber.innerHTML = newBuilding.number
     divCost.innerHTML = newBuilding.cost
 
