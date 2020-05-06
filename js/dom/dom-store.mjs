@@ -1,5 +1,5 @@
 import {data} from '/js/data.mjs';
-import {infosDom} from '/js/dom/dom-bakery.mjs';
+
 
 
 export const creationBuilding = (newBakery) => {  

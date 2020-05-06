@@ -10,11 +10,10 @@ export const infosDom = (newBakery) => {
     h2Bakery.innerHTML = newBakery.name
 
     spanCookieStock[0].innerHTML = newBakery.cookies
-    // spanCookieStock[0].innerHTML = Math.floor(bakeryObject.cookies)
     
     let spanCookiesPerSecond = document.querySelector('#cookiesPerSecond span')
-    // spanCookiesPerSecond.innerHTML = newBakery.cookiesPerSecond
-    spanCookiesPerSecond.innerHTML =  Math.round(newBakery.cookiesPerSecond * 10) / 10
+    spanCookiesPerSecond.innerHTML = newBakery.cookiesPerSecond
+    // spanCookiesPerSecond.innerHTML =  Math.round(newBakery.cookiesPerSecond * 10) / 10
 }
 
 
@@ -39,8 +38,8 @@ divBigCookie.addEventListener('click', (event)=>{
     let clickSon = document.getElementsByClassName('clickCookie')
     clickSon[Math.floor(Math.random() * (7-1)+1)].play()
     
-    // spanCookieStock[0].innerHTML = newBakery.cookies
-    spanCookieStock[0].innerHTML = Math.floor(newBakery.cookies);  
+    spanCookieStock[0].innerHTML = newBakery.cookies
+    // spanCookieStock[0].innerHTML = Math.floor(newBakery.cookies);  
 })
 
 }
@@ -57,10 +56,4 @@ const audioCookie = () => {
     }
     
 
-    // export const addCookiesPerSecond = (newBakery) => {
-    //     function cookiesAutoProduction() {
-    //         newBakery.cookies += newBakery.cookiesPerSecond;
-    //         infosDom(newBakery);
-    //     } 
-    //     window.setInterval(cookiesAutoProduction, 1000);
-    // }
+   
