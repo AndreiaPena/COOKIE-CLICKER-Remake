@@ -46,6 +46,8 @@
 font-size: 21px;
 font-weight: bold;
 position: absolute;
+margin-top: -140px;
+margin-left: -95px;
 animation-name: up;
 animation-duration: 3s;
 }
@@ -57,3 +59,5 @@ animation-duration: 3s;
     50% { opacity: 0.2; }
     100% { opacity: 0; top:0px; }
   }
+
+ 

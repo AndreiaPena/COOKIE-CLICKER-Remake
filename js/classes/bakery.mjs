@@ -43,7 +43,8 @@ set cookies(newStock) {
         const buildingObject = this._buildings.find(element => {
             return element.name === which}); 
         buildingObject.buy()         
-        this._cookiesPerSecond += buildingObject.cookiesPerSecond;     
+        this._cookiesPerSecond += buildingObject.cookiesPerSecond; 
+        this._cookiesPerSecond = this._cookiesPerSecond + buildingObject.cookiesPerSecond;         
     }
  
 }

@@ -28,7 +28,6 @@ export const creationBuilding = (newBakery) => {
     
         let divNumber = document.createElement('div')
         divNumber.className='number'
-        divNumber.innerHTML= newBakery.buildings[i].number
         divTuile.appendChild(divNumber)
     
         if (i < data.length - 3){
@@ -52,11 +51,7 @@ export const creationBuilding = (newBakery) => {
             divNumber.innerHTML = newBakery.buildings[i].number
             divCost.innerHTML = newBakery.buildings[i].cost
             
-        }
-        // infosDom(newBakery)
-        // newBakery.cookiesPerSecond = parseInt(spanPerSecond.innerHTML)
-        // newBakery.buyBuilding(divName.innerHTML)
-        // spanPerSecond.innerHTML = newBakery.cookiesPerSecond
+            }
             
         audioTuiles()
             let clickSon = document.getElementsByClassName('clickTuile')
@@ -90,6 +85,7 @@ export const activateBuilding = (newBakery) => {
         }
     }
 }
+
 
 
 const audioTuiles = () => {  
