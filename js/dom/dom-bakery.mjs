@@ -1,29 +1,33 @@
-import {switchBuilding} from '/js/dom/dom-store.mjs';
+import {activateBuilding} from '/js/dom/dom-store.mjs';
 
 let h2Bakery = document.querySelector('h2')
 let spanCookieStock = document.getElementById('cookiesStock').getElementsByTagName('span')
-let spanPerSecond = document.querySelector('#cookiesPerSecond span')
 let divBigCookie = document.querySelector('#bigCookie')
 
 
 export const infosDom = (newBakery) => { 
+   
+    h2Bakery.innerHTML = newBakery.name
 
-h2Bakery.innerHTML = newBakery.name
-spanCookieStock[0].innerHTML = newBakery.cookies
-spanPerSecond.innerHTML = newBakery.cookiesPerSecond
+    spanCookieStock[0].innerHTML = newBakery.cookies
+    // spanCookieStock[0].innerHTML = Math.floor(bakeryObject.cookies)
+    
+    let spanCookiesPerSecond = document.querySelector('#cookiesPerSecond span')
+    spanCookiesPerSecond.innerHTML = newBakery.cookiesPerSecond
+    // spanCookiesPerSecond.innerHTML =  Math.round(newBakery.cookiesPerSecond * 10) / 10
 }
 
 
 export const ajoutCookies = (newBakery) => {  
 
 divBigCookie.addEventListener('click', (event)=>{
-    spanCookieStock[0].innerHTML = newBakery.bakeCookies(newBakery.cookiesPerClick)
-    switchBuilding(newBakery)
+    newBakery.bakeCookies(newBakery.cookiesPerClick)
+    activateBuilding(newBakery)
 
     let divPlusOne = document.createElement('div')
     divPlusOne.className = 'up'
     divPlusOne.innerHTML = `+${newBakery.cookiesPerClick}`
-    divPlusOne.style.inset=`${event.offsetY - 20}px ${event.offsetX - 10}px`
+    divPlusOne.style.inset=`${event.offsetY}px ${event.offsetX}px`
     divBigCookie.appendChild(divPlusOne)
 
     divPlusOne.addEventListener('animationend', ()=>{
@@ -34,6 +38,8 @@ divBigCookie.addEventListener('click', (event)=>{
     let clickSon = document.getElementsByClassName('clickCookie')
     clickSon[Math.floor(Math.random() * (7-1)+1)].play()
     
+    spanCookieStock[0].innerHTML = newBakery.cookies
+    // spanCookieStock[0].innerHTML = Math.floor(newBakery.cookies);  
 })
 
 }
@@ -49,3 +55,12 @@ const audioCookie = () => {
     }
     }
     
+
+    // export const addCookiesPerSecond = (newBakery) => {
+    //     function cookiesAutoProduction() {
+    //         newBakery.cookies += newBakery.cookiesPerSecond;
+    //         activateBuilding(newBakery);
+    //         infosDom(newBakery);
+    //     } 
+    //     window.setInterval(cookiesAutoProduction, 1000);
+    // }

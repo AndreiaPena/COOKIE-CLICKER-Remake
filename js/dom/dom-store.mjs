@@ -7,10 +7,9 @@ export const creationBuilding = (newBakery) => {
     
         let divBuilding = document.getElementById('buildings')
     
-        let divTuile = document.createElement('div')
-        
+        let divTuile = document.createElement('div') 
         divTuile.id=`building-${newBakery.buildings[i].name.toLowerCase()}`
-        divTuile.className='locked disabled all'
+        divTuile.className='locked disabled'
         divBuilding.appendChild(divTuile)
     
         let divIcon = document.createElement('div')
@@ -41,15 +40,15 @@ export const creationBuilding = (newBakery) => {
         }
     }
     
-export const switchBuilding = (newBakery) => {  
+export const activateBuilding = (newBakery) => {  
     for ( let i = 0 ; i < data.length ; i++){
-        if( newBakery.cookies >= data[i].cost){ // si 16 >= 15
+        if( newBakery.cookies >= newBakery.buildings[i].cost){ // si 16 >= 15
             let tuilePremiereEtDeux = document.getElementById(`building-${newBakery.buildings[i].name.toLowerCase()}`)
 
             tuilePremiereEtDeux.classList.remove('locked')
             tuilePremiereEtDeux.classList.remove('disabled')
             tuilePremiereEtDeux.classList.add('unlocked')
-            tuilePremiereEtDeux.classList.add('enable')
+            tuilePremiereEtDeux.classList.add('enabled')
 
             let tuileSuivante = document.getElementById(`building-${newBakery.buildings[i + 1].name.toLowerCase()}`)
             tuileSuivante.classList.remove('locked')
@@ -58,7 +57,6 @@ export const switchBuilding = (newBakery) => {
             let tuileTroisieme = document.getElementById(`building-${newBakery.buildings[i + 2].name.toLowerCase()}`);
             tuileTroisieme.style.display = "flex"
          
-           
         }
     }
 }
@@ -73,7 +71,7 @@ function handleCheck() {
     let divNumber = this.querySelector('.number')
     let divCost = this.querySelector('.cost')
     let divName = this.querySelector('.name')
-    
+   
     for( let i = 0; i< data.length; i++){
     newBakery.buildings[i].number = divNumber.innerHTML
     newBakery.buildings[i].cost= divCost.innerHTML 
