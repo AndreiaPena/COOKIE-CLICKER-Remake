@@ -30,6 +30,9 @@ export class Bakery{
     set buildings(newBuilding){
         this._buildings =newBuilding
     }
+    set cookies(newStock) {
+        this._cookies = newStock;
+    }
 
 
     bakeCookies(howMany){
