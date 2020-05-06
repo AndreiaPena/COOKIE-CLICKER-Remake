@@ -1,12 +1,11 @@
-
-
 export class Building {
-    constructor(name, description, number, cookiesPerSecond , cost){
-        this._name = name ;
-        this._description = description  ;
-        this._number = number ||  0;
-        this._cookiesPerSecond = cookiesPerSecond ;
-        this._cost = cost ;
+    constructor(building){
+        
+        this._name = building.name ;
+        this._description = building.description  ;
+        this._number =  0;
+        this._cookiesPerSecond = building.cookiesPerSecond ;
+        this._cost = building.cost ;
     }
 
     get name(){

@@ -1,12 +1,8 @@
 import {Bakery} from './classes/bakery.mjs';
-import {Building} from './classes/building.mjs';
 import {data} from './data.mjs';
 
 const newBakery = new Bakery()
-const newBuilding = new Building()
  
-
-// newBakery.buyBuilding(???)
 
 
 ///////////////////////////////////////// RECUPERATION DE DIV POUR CLASS BAKERY/////////////////////////////////////////
@@ -17,8 +13,8 @@ h2Bakery.innerHTML = newBakery.name
 let spanStock = document.getElementById('cookiesStock').getElementsByTagName('span')
 spanStock[0].innerHTML = newBakery.cookies
 
-let spanPerSecond = document.getElementById('cookiesPerSecond').getElementsByTagName('span')
-spanPerSecond[0].innerHTML = newBakery.cookiesPerSecond
+let spanPerSecond = document.querySelector('#cookiesPerSecond span')
+spanPerSecond.innerHTML = newBakery.cookiesPerSecond
 
 
 let divBigCookie = document.querySelector('#bigCookie')
@@ -49,7 +45,7 @@ divBigCookie.addEventListener('click', (event)=>{
 const switchBuilding = (newBakery) => {  
     for ( let i = 0 ; i < data.length ; i++){
         if( newBakery.cookies >= data[i].cost){ // si 16 >= 15
-            let divCursorGrandma = document.getElementById(`building-${data[i].name.toLowerCase()}`)
+            let divCursorGrandma = document.getElementById(`building-${newBakery.buildings[i].name.toLowerCase()}`)
 
             divCursorGrandma.classList.remove('locked')
             divCursorGrandma.classList.remove('disabled')
@@ -57,11 +53,11 @@ const switchBuilding = (newBakery) => {
             divCursorGrandma.classList.add('enable')
 
 
-            let divTestSuivante = document.getElementById(`building-${data[i + 1].name.toLowerCase()}`)
+            let divTestSuivante = document.getElementById(`building-${newBakery.buildings[i + 1].name.toLowerCase()}`)
             divTestSuivante.classList.remove('locked')
             divTestSuivante.classList.add('unlocked')
 
-            let tuileTroisieme = document.getElementById(`building-${data[i + 2].name.toLowerCase()}`);
+            let tuileTroisieme = document.getElementById(`building-${newBakery.buildings[i + 2].name.toLowerCase()}`);
             tuileTroisieme.style.display = "flex"
         }
     }
@@ -91,7 +87,7 @@ for ( let i = 0 ; i < data.length ; i++){
 
     let divTuile = document.createElement('div')
     
-    divTuile.id=`building-${data[i].name.toLowerCase()}`
+    divTuile.id=`building-${newBakery.buildings[i].name.toLowerCase()}`
     divTuile.className='locked disabled all'
     divBuilding.appendChild(divTuile)
 
@@ -101,16 +97,17 @@ for ( let i = 0 ; i < data.length ; i++){
         
     let divName = document.createElement('div')
     divName.className='name'
-    divName.innerHTML= data[i].name
+    divName.innerHTML= newBakery.buildings[i].name
     divTuile.appendChild(divName)
 
     let divCost = document.createElement('div')
     divCost.className='cost'
-    divCost.innerHTML= data[i].cost
+    divCost.innerHTML= newBakery.buildings[i].cost
     divTuile.appendChild(divCost)
 
     let divNumber = document.createElement('div')
     divNumber.className='number'
+    divNumber.innerHTML= newBakery.buildings[i].number
     divTuile.appendChild(divNumber)
 
     if (i < data.length - 3){
@@ -132,17 +129,26 @@ divMere.forEach(tuile => tuile.addEventListener('click', handleCheck));
 
 
 function handleCheck() {
+
     let divNumber = this.querySelector('.number')
     let divCost = this.querySelector('.cost')
-    // let divName = this.querySelector('.name")
-    newBuilding.number = divNumber.innerHTML
-    newBuilding.cost= divCost.innerHTML  
-    newBuilding.buy() 
-    // ???.buyBuilding(divName.innerHTML)
-    divNumber.innerHTML = newBuilding.number
-    divCost.innerHTML = newBuilding.cost
-
-    audioTuiles()
+    let divName = this.querySelector('.name')
+    
+    for( let i = 0; i< data.length; i++){
+    newBakery.buildings[i].number = divNumber.innerHTML
+    newBakery.buildings[i].cost= divCost.innerHTML 
+    console.log(spanPerSecond.innerHTML)
+    newBakery.buyBuilding(divName.innerHTML)
+    divNumber.innerHTML = newBakery.buildings[i].number
+    divCost.innerHTML = newBakery.buildings[i].cost
+    
+//    newBakery._cookiesPerSecond += newBakery.buildings[i].cookiesPerSecond; 
+}
+newBakery.cookiesPerSecond = parseInt(spanPerSecond.innerHTML)
+newBakery.buyBuilding(divName.innerHTML)
+spanPerSecond.innerHTML = newBakery.cookiesPerSecond
+    
+audioTuiles()
     let clickSon = document.getElementsByClassName('clickTuile')
     clickSon[Math.floor(Math.random() * (4-1)+1)].play()
 }
@@ -163,6 +169,3 @@ const audioTuiles = () => {
         }
     }
 }
-
-newBakery.buyBuilding()
-console.log(newBakery.buyBuilding())

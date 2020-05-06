@@ -27,17 +27,20 @@ export class Bakery{
     set cookiesPerSecond(newCookiesPerSecond){
         this._cookiesPerSecond = newCookiesPerSecond
     }
-    
+    set buildings(newBuilding){
+        this._buildings =newBuilding
+    }
+
+
     bakeCookies(howMany){
         return this._cookies += howMany
     }
 
-
     buyBuilding(which) { 
-        const buildingObject = this._buildings.find(element => element.name === which); 
+        const buildingObject = this._buildings.find(element => {
+            return element.name === which}); 
         buildingObject.buy()         
         this._cookiesPerSecond += buildingObject.cookiesPerSecond;     
     }
  
 }
-
