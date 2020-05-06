@@ -37,60 +37,59 @@ export const creationBuilding = (newBakery) => {
             divTuile.style.display = "none"
         }
     
+        divTuile.addEventListener('click', (handleCheck));
+
+        function handleCheck() {
+         if ( divTuile.className == 'unlocked enabled'){
+            let divNumber = this.querySelector('.number')
+            let divCost = this.querySelector('.cost')
+            let divName = this.querySelector('.name')
+           
+            for( let i = 0; i< data.length; i++){
+            newBakery.buildings[i].number = divNumber.innerHTML
+            newBakery.buildings[i].cost= divCost.innerHTML 
+            newBakery.buyBuilding(divName.innerHTML)
+            divNumber.innerHTML = newBakery.buildings[i].number
+            divCost.innerHTML = newBakery.buildings[i].cost
+            
+        }
+        // infosDom(newBakery)
+        // newBakery.cookiesPerSecond = parseInt(spanPerSecond.innerHTML)
+        // newBakery.buyBuilding(divName.innerHTML)
+        // spanPerSecond.innerHTML = newBakery.cookiesPerSecond
+            
+        audioTuiles()
+            let clickSon = document.getElementsByClassName('clickTuile')
+            clickSon[Math.floor(Math.random() * (4-1)+1)].play()
+        }
+
+    }
+
         }
     }
     
 export const activateBuilding = (newBakery) => {  
-    for ( let i = 0 ; i < data.length ; i++){
+    for ( let i = 0 ; i < data.length-2; i++){
+
+        let tuilePremiereEtDeux = document.getElementById(`building-${newBakery.buildings[i].name.toLowerCase()}`)
+        let tuileSuivante = document.getElementById(`building-${newBakery.buildings[i + 1].name.toLowerCase()}`)
+        let tuileTroisieme = document.getElementById(`building-${newBakery.buildings[i + 2].name.toLowerCase()}`);
+        
         if( newBakery.cookies >= newBakery.buildings[i].cost){ // si 16 >= 15
-            let tuilePremiereEtDeux = document.getElementById(`building-${newBakery.buildings[i].name.toLowerCase()}`)
 
             tuilePremiereEtDeux.classList.remove('locked')
             tuilePremiereEtDeux.classList.remove('disabled')
             tuilePremiereEtDeux.classList.add('unlocked')
             tuilePremiereEtDeux.classList.add('enabled')
 
-            let tuileSuivante = document.getElementById(`building-${newBakery.buildings[i + 1].name.toLowerCase()}`)
             tuileSuivante.classList.remove('locked')
             tuileSuivante.classList.add('unlocked')
 
-            let tuileTroisieme = document.getElementById(`building-${newBakery.buildings[i + 2].name.toLowerCase()}`);
             tuileTroisieme.style.display = "flex"
          
         }
     }
 }
-
-export const achatTuiles = (newBakery) => { 
-
-const divMere = document.getElementById('buildings').childNodes
-divMere.forEach(tuile => tuile.addEventListener('click', (handleCheck)));
-
-function handleCheck() {
-
-    let divNumber = this.querySelector('.number')
-    let divCost = this.querySelector('.cost')
-    let divName = this.querySelector('.name')
-   
-    for( let i = 0; i< data.length; i++){
-    newBakery.buildings[i].number = divNumber.innerHTML
-    newBakery.buildings[i].cost= divCost.innerHTML 
-    newBakery.buyBuilding(divName.innerHTML)
-    divNumber.innerHTML = newBakery.buildings[i].number
-    divCost.innerHTML = newBakery.buildings[i].cost
-    
-}
-// infosDom(newBakery)
-// newBakery.cookiesPerSecond = parseInt(spanPerSecond.innerHTML)
-// newBakery.buyBuilding(divName.innerHTML)
-// spanPerSecond.innerHTML = newBakery.cookiesPerSecond
-    
-audioTuiles()
-    let clickSon = document.getElementsByClassName('clickTuile')
-    clickSon[Math.floor(Math.random() * (4-1)+1)].play()
-}
-}
-
 
 
 const audioTuiles = () => {  
